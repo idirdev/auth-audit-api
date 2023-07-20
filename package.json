@@ -1,0 +1,52 @@
+{
+  "name": "auth-audit-api",
+  "version": "1.0.0",
+  "description": "Production-grade authentication and audit logging REST API",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:studio": "drizzle-kit studio",
+    "docs": "tsx src/docs/generate.ts"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^7.3.1",
+    "morgan": "^1.10.0",
+    "winston": "^3.14.1",
+    "swagger-ui-express": "^5.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "uuid": "^10.0.0",
+    "dotenv": "^16.4.5",
+    "cron": "^3.1.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "tsx": "^4.16.2",
+    "vitest": "^2.0.4",
+    "@types/node": "^20.14.12",
+    "@types/express": "^4.17.21",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/cors": "^2.8.17",
+    "@types/morgan": "^1.9.9",
+    "@types/swagger-ui-express": "^4.1.6",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/uuid": "^10.0.0",
+    "drizzle-kit": "^0.24.0",
+    "eslint": "^8.57.0"
+  },
+  "license": "MIT"
+}
