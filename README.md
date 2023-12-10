@@ -4,6 +4,12 @@ Production-grade authentication and audit logging REST API built with Express, T
 
 ![Preview](./assets/preview.svg)
 
+### Swagger Documentation
+![Swagger UI](./assets/swagger.svg)
+
+### API Demo
+![Terminal](./assets/terminal.svg)
+
 ## Features
 
 - **Auth** — Register, login, refresh, logout, password reset

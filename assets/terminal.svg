@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">
+  <rect width="1200" height="700" fill="#0f1117" rx="12"/>
+  <!-- Terminal window -->
+  <rect x="40" y="20" width="1120" height="660" rx="12" fill="#1a1d27" stroke="#2a2d3a" stroke-width="1"/>
+  <rect x="40" y="20" width="1120" height="36" rx="12" fill="#22252f"/>
+  <rect x="40" y="44" width="1120" height="12" fill="#22252f"/>
+  <circle cx="66" cy="38" r="6" fill="#ff5f57"/>
+  <circle cx="86" cy="38" r="6" fill="#febc2e"/>
+  <circle cx="106" cy="38" r="6" fill="#28c840"/>
+  <text x="600" y="43" font-family="monospace" font-size="12" fill="#6b7280" text-anchor="middle">auth-audit-api — API requests</text>
+
+  <!-- Register request -->
+  <text x="70" y="80" font-family="monospace" font-size="12" fill="#6b7280">$</text>
+  <text x="85" y="80" font-family="monospace" font-size="12" fill="#e5e7eb"> curl -X POST localhost:4000/api/v1/auth/register \</text>
+  <text x="85" y="98" font-family="monospace" font-size="12" fill="#e5e7eb">  -H "Content-Type: application/json" \</text>
+  <text x="85" y="116" font-family="monospace" font-size="12" fill="#e5e7eb">  -d '{"email":"admin@test.com","password":"Pass123!","name":"Admin"}'</text>
+
+  <text x="70" y="146" font-family="monospace" font-size="12" fill="#10b981">201 Created</text>
+  <text x="70" y="166" font-family="monospace" font-size="12" fill="#6b7280">{</text>
+  <text x="70" y="184" font-family="monospace" font-size="12" fill="#6b7280">  "id": </text><text x="150" y="184" font-family="monospace" font-size="12" fill="#f59e0b">"a1b2c3d4-e5f6-7890-abcd-ef1234567890"</text>
+  <text x="70" y="202" font-family="monospace" font-size="12" fill="#6b7280">  "email": </text><text x="170" y="202" font-family="monospace" font-size="12" fill="#10b981">"admin@test.com"</text>
+  <text x="70" y="220" font-family="monospace" font-size="12" fill="#6b7280">  "name": </text><text x="162" y="220" font-family="monospace" font-size="12" fill="#10b981">"Admin"</text>
+  <text x="70" y="238" font-family="monospace" font-size="12" fill="#6b7280">  "role": </text><text x="162" y="238" font-family="monospace" font-size="12" fill="#10b981">"viewer"</text>
+  <text x="70" y="256" font-family="monospace" font-size="12" fill="#6b7280">}</text>
+
+  <line x1="70" y1="272" x2="1130" y2="272" stroke="#2a2d3a" stroke-width="1"/>
+
+  <!-- Login request -->
+  <text x="70" y="296" font-family="monospace" font-size="12" fill="#6b7280">$</text>
+  <text x="85" y="296" font-family="monospace" font-size="12" fill="#e5e7eb"> curl -X POST localhost:4000/api/v1/auth/login \</text>
+  <text x="85" y="314" font-family="monospace" font-size="12" fill="#e5e7eb">  -d '{"email":"admin@test.com","password":"Pass123!"}'</text>
+
+  <text x="70" y="344" font-family="monospace" font-size="12" fill="#10b981">200 OK</text>
+  <text x="70" y="364" font-family="monospace" font-size="12" fill="#6b7280">{</text>
+  <text x="70" y="382" font-family="monospace" font-size="12" fill="#6b7280">  "accessToken": </text><text x="218" y="382" font-family="monospace" font-size="12" fill="#f59e0b">"eyJhbGciOiJIUzI1NiIs..."</text>
+  <text x="70" y="400" font-family="monospace" font-size="12" fill="#6b7280">  "refreshToken": </text><text x="226" y="400" font-family="monospace" font-size="12" fill="#f59e0b">"dGhpcyBpcyBhIHJlZnJl..."</text>
+  <text x="70" y="418" font-family="monospace" font-size="12" fill="#6b7280">  "expiresIn": </text><text x="194" y="418" font-family="monospace" font-size="12" fill="#8b5cf6">900</text>
+  <text x="70" y="436" font-family="monospace" font-size="12" fill="#6b7280">}</text>
+
+  <line x1="70" y1="452" x2="1130" y2="452" stroke="#2a2d3a" stroke-width="1"/>
+
+  <!-- Audit logs request -->
+  <text x="70" y="476" font-family="monospace" font-size="12" fill="#6b7280">$</text>
+  <text x="85" y="476" font-family="monospace" font-size="12" fill="#e5e7eb"> curl localhost:4000/api/v1/audit?limit=3 -H "Authorization: Bearer $TOKEN"</text>
+
+  <text x="70" y="506" font-family="monospace" font-size="12" fill="#10b981">200 OK</text>
+  <text x="70" y="526" font-family="monospace" font-size="12" fill="#6b7280">{ "data": [</text>
+  <text x="70" y="546" font-family="monospace" font-size="12" fill="#6b7280">  { "action": </text><text x="198" y="546" font-family="monospace" font-size="12" fill="#10b981">"auth.login"</text><text x="322" y="546" font-family="monospace" font-size="12" fill="#6b7280">, "userId": "a1b2...", "ip": </text><text x="640" y="546" font-family="monospace" font-size="12" fill="#10b981">"192.168.1.1"</text><text x="780" y="546" font-family="monospace" font-size="12" fill="#6b7280">, "status":</text><text x="870" y="546" font-family="monospace" font-size="12" fill="#8b5cf6"> 200</text><text x="900" y="546" font-family="monospace" font-size="12" fill="#6b7280">, "durationMs":</text><text x="1020" y="546" font-family="monospace" font-size="12" fill="#8b5cf6"> 45</text><text x="1042" y="546" font-family="monospace" font-size="12" fill="#6b7280"> },</text>
+  <text x="70" y="566" font-family="monospace" font-size="12" fill="#6b7280">  { "action": </text><text x="198" y="566" font-family="monospace" font-size="12" fill="#10b981">"auth.register"</text><text x="342" y="566" font-family="monospace" font-size="12" fill="#6b7280">, "userId": "a1b2...", "ip": </text><text x="660" y="566" font-family="monospace" font-size="12" fill="#10b981">"192.168.1.1"</text><text x="800" y="566" font-family="monospace" font-size="12" fill="#6b7280">, "status":</text><text x="890" y="566" font-family="monospace" font-size="12" fill="#8b5cf6"> 201</text><text x="920" y="566" font-family="monospace" font-size="12" fill="#6b7280">, "durationMs":</text><text x="1040" y="566" font-family="monospace" font-size="12" fill="#8b5cf6"> 120</text><text x="1070" y="566" font-family="monospace" font-size="12" fill="#6b7280"> },</text>
+  <text x="70" y="586" font-family="monospace" font-size="12" fill="#6b7280">  { "action": </text><text x="198" y="586" font-family="monospace" font-size="12" fill="#10b981">"user.role.update"</text><text x="366" y="586" font-family="monospace" font-size="12" fill="#6b7280">, "userId": "f9e8...", "ip": </text><text x="680" y="586" font-family="monospace" font-size="12" fill="#10b981">"10.0.0.5"</text><text x="790" y="586" font-family="monospace" font-size="12" fill="#6b7280">, "status":</text><text x="880" y="586" font-family="monospace" font-size="12" fill="#8b5cf6"> 200</text><text x="910" y="586" font-family="monospace" font-size="12" fill="#6b7280">, "durationMs":</text><text x="1030" y="586" font-family="monospace" font-size="12" fill="#8b5cf6"> 32</text><text x="1052" y="586" font-family="monospace" font-size="12" fill="#6b7280"> }</text>
+  <text x="70" y="606" font-family="monospace" font-size="12" fill="#6b7280">], "pagination": { "cursor": "c3d4...", "hasMore": true } }</text>
+
+  <line x1="70" y1="622" x2="1130" y2="622" stroke="#2a2d3a" stroke-width="1"/>
+
+  <!-- Health check -->
+  <text x="70" y="646" font-family="monospace" font-size="12" fill="#6b7280">$</text>
+  <text x="85" y="646" font-family="monospace" font-size="12" fill="#e5e7eb"> curl localhost:4000/api/v1/health</text>
+  <text x="70" y="666" font-family="monospace" font-size="12" fill="#10b981">200</text>
+  <text x="100" y="666" font-family="monospace" font-size="12" fill="#6b7280">{ "status": </text><text x="220" y="666" font-family="monospace" font-size="12" fill="#10b981">"healthy"</text><text x="310" y="666" font-family="monospace" font-size="12" fill="#6b7280">, "db": { "status": </text><text x="510" y="666" font-family="monospace" font-size="12" fill="#10b981">"up"</text><text x="540" y="666" font-family="monospace" font-size="12" fill="#6b7280">, "latencyMs": </text><text x="670" y="666" font-family="monospace" font-size="12" fill="#8b5cf6">3</text><text x="682" y="666" font-family="monospace" font-size="12" fill="#6b7280"> }, "uptime": </text><text x="800" y="666" font-family="monospace" font-size="12" fill="#8b5cf6">84621</text><text x="850" y="666" font-family="monospace" font-size="12" fill="#6b7280"> }</text>
+</svg>
