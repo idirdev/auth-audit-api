@@ -110,3 +110,7 @@ src/
 ## License
 
 MIT
+
+## Environment Variables
+
+See `.env.example` for required configuration.
