@@ -1,11 +1,16 @@
 interface AuditLog {
   id: string;
-  userId: string;
+  userId: string | null;
   action: string;
   resource: string;
-  ip: string;
-  timestamp: Date;
-  metadata?: Record<string, unknown>;
+  resourceId: string | null;
+  oldValue: unknown;
+  newValue: unknown;
+  ipAddress: string | null;
+  userAgent: string | null;
+  statusCode: number | null;
+  durationMs: number | null;
+  createdAt: Date;
 }
 
 export function exportToJson(logs: AuditLog[], pretty = false): string {
@@ -15,7 +20,7 @@ export function exportToJson(logs: AuditLog[], pretty = false): string {
       count: logs.length,
       logs: logs.map((l) => ({
         ...l,
-        timestamp: l.timestamp.toISOString(),
+        createdAt: l.createdAt.toISOString(),
       })),
     },
     null,
@@ -24,9 +29,9 @@ export function exportToJson(logs: AuditLog[], pretty = false): string {
 }
 
 export function exportToCsv(logs: AuditLog[]): string {
-  const header = 'id,userId,action,resource,ip,timestamp';
+  const header = 'id,userId,action,resource,ipAddress,createdAt';
   const rows = logs.map((l) =>
-    [l.id, l.userId, l.action, l.resource, l.ip, l.timestamp.toISOString()]
+    [l.id, l.userId ?? '', l.action, l.resource, l.ipAddress ?? '', l.createdAt.toISOString()]
       .map((v) => escapeCSV(v))
       .join(',')
   );
@@ -54,8 +59,8 @@ export function filterLogs(
     if (filters.userId && log.userId !== filters.userId) return false;
     if (filters.action && log.action !== filters.action) return false;
     if (filters.resource && log.resource !== filters.resource) return false;
-    if (filters.startDate && log.timestamp < filters.startDate) return false;
-    if (filters.endDate && log.timestamp > filters.endDate) return false;
+    if (filters.startDate && log.createdAt < filters.startDate) return false;
+    if (filters.endDate && log.createdAt > filters.endDate) return false;
     return true;
   });
 }

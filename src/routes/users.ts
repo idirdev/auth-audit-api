@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { db } from "../db/index.js";
 import { users } from "../db/schema.js";
-import { eq, desc, sql, ilike } from "drizzle-orm";
+import { eq, desc, sql } from "drizzle-orm";
 import { authenticate, authorize, AuthRequest } from "../middleware/auth.js";
 
 export const usersRouter = Router();
@@ -11,10 +11,6 @@ usersRouter.use(authenticate);
 usersRouter.get("/", authorize("superadmin", "admin"), async (req: AuthRequest, res) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = Math.min(parseInt(req.query.limit as string) || 20, 100);
-  const search = req.query.search as string;
-  const role = req.query.role as string;
-  const sort = (req.query.sort as string) || "createdAt";
-  const order = (req.query.order as string) === "asc" ? "asc" : "desc";
 
   let query = db.select({
     id: users.id, email: users.email, name: users.name, role: users.role,
