@@ -114,3 +114,23 @@ MIT
 ## Environment Variables
 
 See `.env.example` for required configuration.
+
+---
+
+## 🇫🇷 Documentation en français
+
+### Description
+Auth Audit API est une API REST d'authentification et de journalisation d'audit de qualité production, construite avec Express, TypeScript et PostgreSQL. Elle fournit une gestion complète des utilisateurs, des sessions sécurisées et un historique d'audit détaillé pour toutes les actions sensibles. Une base solide pour les applications nécessitant traçabilité et conformité.
+
+### Installation
+```bash
+git clone https://github.com/idirdev/auth-audit-api.git
+cd auth-audit-api
+npm install
+cp .env.example .env
+# Éditez .env avec vos paramètres de base de données
+npm run dev
+```
+
+### Utilisation
+Une fois le serveur lancé, accédez à la documentation Swagger pour explorer et tester les endpoints disponibles. Consultez la documentation en anglais ci-dessus pour la configuration complète et les exemples d'intégration.
